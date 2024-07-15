@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-function RightLetters() {
+const RightLetters = ({ word, guessedLetters }) => {
   return (
-    <div>RightLetters</div>
-  )
-}
+    <div className="flex justify-center flex-wrap mb-4">
+      {word.split('').map((letter, index) => (
+        <span key={index} className="text-2xl mx-1 text-white font-chalk">
+          {guessedLetters.includes(letter) ? letter : '_'}
+        </span>
+      ))}
+    </div>
+  );
+};
 
-export default RightLetters
+export default RightLetters;

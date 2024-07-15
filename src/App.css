@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+
 #root {
   margin: 0;
   padding: 0;
@@ -39,3 +41,13 @@
   background: #469875 !important;
 }
 
+.app {
+  background-image: url("/path/to/your/chalkboard-texture.jpg");
+  background-size: cover;
+  font-family: "Shadows Into Light", cursive;
+  color: white;
+}
+
+.font-chalk {
+  font-family: "Shadows Into Light", cursive;
+}

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-function WrongLetters() {
+const WrongLetters = ({ wrongGuesses }) => {
   return (
-    <div>WrongLetters</div>
-  )
-}
+    <div className="text-red-600 mb-4">
+      <p className='text-white font-chalk'>Erreurs: {wrongGuesses}</p>
+    </div>
+  );
+};
 
-export default WrongLetters
+export default WrongLetters;
