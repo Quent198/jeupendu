@@ -15,6 +15,7 @@ function App() {
   );
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState(0);
+  console.log(wrongGuesses);
 
   const handleGuess = (letter) => {
     if (word.includes(letter)) {
@@ -24,7 +25,7 @@ function App() {
     }
   };
 
-  const isGameOver = wrongGuesses >= 6;
+  const isGameOver = wrongGuesses >= 7;
   const isWinner = word
     .split("")
     .every((letter) => guessedLetters.includes(letter));
