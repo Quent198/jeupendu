@@ -53,3 +53,12 @@ body {
     background-color: #f9f9f9;
   }
 }
+
+option:where(:not(:checked)) {
+  background-color: black;
+}
+
+option:checked {
+  color: white;
+  background-color: black;
+}

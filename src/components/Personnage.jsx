@@ -20,8 +20,7 @@ function Personnage({ wrongGuesses }) {
 
   return (
     <div className="mb-4">
-      {wrongGuesses > 0 && <img src={images[wrongGuesses - 1]} alt="" />}
-      <p className="text-xl">Erreurs: {wrongGuesses}/7</p>
+      {wrongGuesses > 0 && <img src={images[wrongGuesses - 1]} alt=""  />}
     </div>
   );
 }
