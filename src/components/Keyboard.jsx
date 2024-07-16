@@ -10,7 +10,7 @@ const Keyboard = ({ onGuess, disabled }) => {
           key={letter}
           onClick={() => onGuess(letter)}
           disabled={disabled}
-          className="bg-black bg-opacity-20 hover:bg-black hover:bg-opacity-5 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400 font-chalk"
+          className="bg-black bg-opacity-20 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400 font-chalk"
         >
           {letter}
         </button>
