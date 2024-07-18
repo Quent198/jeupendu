@@ -1,6 +1,6 @@
 import React from "react";
 
-const Keyboard = ({ onGuess, disabled }) => {
+const Keyboard = ({ onGuess, guessedLetters }) => {
   const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 
   return (
@@ -9,8 +9,12 @@ const Keyboard = ({ onGuess, disabled }) => {
         <button
           key={letter}
           onClick={() => onGuess(letter)}
-          disabled={disabled}
-          className="bg-black bg-opacity-20 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400 font-chalk"
+          disabled={guessedLetters.includes(letter)}
+          className={`bg-black bg-opacity-20 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded ${
+            guessedLetters.includes(letter)
+              ? "disabled:bg-gray-400 disabled:bg-opacity-25"
+              : ""
+          } font-chalk`}
         >
           {letter}
         </button>

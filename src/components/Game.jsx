@@ -11,6 +11,10 @@ let words;
 
 function Game() {
   const [theme, setTheme] = useState("animaux");
+  const [word, setWord] = useState("");
+  const [guessedLetters, setGuessedLetters] = useState([]);
+  const [wrongGuesses, setWrongGuesses] = useState(0);
+
   useEffect(() => {
     if (theme === "animaux") {
       words = [
@@ -49,28 +53,22 @@ function Game() {
     setWord(words[Math.floor(Math.random() * words.length)]);
   }, [theme]);
 
-  const [word, setWord] = useState("");
-  const [guessedLetters, setGuessedLetters] = useState([]);
-  const [wrongGuesses, setWrongGuesses] = useState(0);
-  console.log(wrongGuesses);
-
   const handleGuess = (letter) => {
-    if (word.includes(letter)) {
+    if (!guessedLetters.includes(letter)) {
       setGuessedLetters([...guessedLetters, letter]);
-    } else {
-      setWrongGuesses(wrongGuesses + 1);
+      if (!word.includes(letter)) {
+        setWrongGuesses(wrongGuesses + 1);
+      }
     }
   };
 
   const isGameOver = wrongGuesses >= 7;
-  const isWinner = word
-    .split("")
-    .every((letter) => guessedLetters.includes(letter));
+  const isWinner = word.split("").every((letter) => guessedLetters.includes(letter));
 
   return (
     <div
       style={{ backgroundImage: "url('/chalkboard.jpg')" }}
-      className="min-h-screen flex flex-col items-center justify-center  p-4 w-screen"
+      className="min-h-screen flex flex-col items-center justify-center p-4 w-screen"
     >
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Jeu du Pendu
@@ -78,7 +76,7 @@ function Game() {
       <Personnage wrongGuesses={wrongGuesses} />
       <RightLetters word={word} guessedLetters={guessedLetters} />
       <WrongLetters wrongGuesses={wrongGuesses} />
-      <Keyboard onGuess={handleGuess} disabled={isGameOver || isWinner} />
+      <Keyboard onGuess={handleGuess} guessedLetters={guessedLetters} />
       <FilterTheme setTheme={setTheme} theme={theme} />
       <GameButtons isGameOver={isGameOver} isWinner={isWinner} word={word} />
       <GameStatus isGameOver={isGameOver} isWinner={isWinner} word={word} />
@@ -87,3 +85,4 @@ function Game() {
 }
 
 export default Game;
+
