@@ -79,8 +79,8 @@ function Game() {
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Jeu du Pendu
       </h1>
+      
       <GameStatus isGameOver={isGameOver} isWinner={isWinner} word={word} />
-
       <Personnage wrongGuesses={wrongGuesses} />
       <RightLetters word={word} guessedLetters={guessedLetters} />
       <WrongLetters wrongGuesses={wrongGuesses} />
