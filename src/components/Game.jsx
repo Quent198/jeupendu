@@ -70,15 +70,17 @@ function Game() {
   return (
     <div
       style={{
-        backgroundPosition: "center",
+        backgroundPosition: "between",
         backgroundSize: "cover",
         backgroundImage: "url('/chalkboard.jpg')",
       }}
-      className="min-h-screen flex flex-col items-center justify-center p-4 w-screen"
+      className="min-h-screen flex flex-col items-center justify-between p-4 py-10 w-screen"
     >
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Jeu du Pendu
       </h1>
+      <GameStatus isGameOver={isGameOver} isWinner={isWinner} word={word} />
+
       <Personnage wrongGuesses={wrongGuesses} />
       <RightLetters word={word} guessedLetters={guessedLetters} />
       <WrongLetters wrongGuesses={wrongGuesses} />
@@ -90,7 +92,6 @@ function Game() {
       )}
 
       <GameButtons isGameOver={isGameOver} isWinner={isWinner} word={word} />
-      <GameStatus isGameOver={isGameOver} isWinner={isWinner} word={word} />
     </div>
   );
 }
