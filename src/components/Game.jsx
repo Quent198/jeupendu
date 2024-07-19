@@ -63,11 +63,17 @@ function Game() {
   };
 
   const isGameOver = wrongGuesses >= 7;
-  const isWinner = word.split("").every((letter) => guessedLetters.includes(letter));
+  const isWinner = word
+    .split("")
+    .every((letter) => guessedLetters.includes(letter));
 
   return (
     <div
-      style={{ backgroundImage: "url('/chalkboard.jpg')" }}
+      style={{
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundImage: "url('/chalkboard.jpg')",
+      }}
       className="min-h-screen flex flex-col items-center justify-center p-4 w-screen"
     >
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
@@ -76,8 +82,13 @@ function Game() {
       <Personnage wrongGuesses={wrongGuesses} />
       <RightLetters word={word} guessedLetters={guessedLetters} />
       <WrongLetters wrongGuesses={wrongGuesses} />
-      <Keyboard onGuess={handleGuess} guessedLetters={guessedLetters} />
-      <FilterTheme setTheme={setTheme} theme={theme} />
+      {!isGameOver && !isWinner && (
+        <>
+          <Keyboard onGuess={handleGuess} guessedLetters={guessedLetters} />
+          <FilterTheme setTheme={setTheme} theme={theme} />
+        </>
+      )}
+
       <GameButtons isGameOver={isGameOver} isWinner={isWinner} word={word} />
       <GameStatus isGameOver={isGameOver} isWinner={isWinner} word={word} />
     </div>
@@ -85,4 +96,3 @@ function Game() {
 }
 
 export default Game;
-

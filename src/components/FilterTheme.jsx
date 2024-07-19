@@ -9,7 +9,7 @@ function FilterTheme({ setTheme, theme }) {
       onChange={(e) => handleSwitchTheme(e)}
       value={theme}
       defaultValue=""
-      className="bg-white text-white font-chalk bg-opacity-10 w-[325px] text-black my-5 "
+      className="bg-black text-white font-chalk bg-opacity-40 w-[325px] text-black my-5 "
     >
       <option value="animaux">animaux</option>
       <option value="pays">pays</option>

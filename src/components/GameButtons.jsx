@@ -15,7 +15,7 @@ const GameButtons = ({
   return (
     <button
       onClick={() => window.location.reload()}
-      className="mt-4 bg-black bg-opacity-20 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded font-chalk"
+      className="mt-4 bg-black bg-opacity-40 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded font-chalk"
     >
       Réinitialiser le jeu
     </button>

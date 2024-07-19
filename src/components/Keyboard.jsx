@@ -10,7 +10,7 @@ const Keyboard = ({ onGuess, guessedLetters }) => {
           key={letter}
           onClick={() => onGuess(letter)}
           disabled={guessedLetters.includes(letter)}
-          className={`bg-black bg-opacity-20 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded ${
+          className={`bg-black bg-opacity-40 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded ${
             guessedLetters.includes(letter)
               ? "disabled:bg-gray-400 disabled:bg-opacity-25"
               : ""
