@@ -6,6 +6,7 @@ import Keyboard from "./Keyboard";
 import GameButtons from "./GameButtons";
 import GameStatus from "./GameStatus";
 import FilterTheme from "./FilterTheme";
+import Chalksound from "../../public/writechalk.mp3";
 
 let words;
 
@@ -14,6 +15,12 @@ function Game() {
   const [word, setWord] = useState("");
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState(0);
+  const writechalksound = new Audio(Chalksound);
+  const writechalksoundInstance = writechalksound.cloneNode(); // pour éviter que le précédent son se coupe
+
+  useEffect(() => {
+    writechalksoundInstance.play();
+  }, [wrongGuesses]);
 
   useEffect(() => {
     if (theme === "animaux") {
@@ -79,7 +86,7 @@ function Game() {
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Jeu du Pendu
       </h1>
-      
+
       <GameStatus isGameOver={isGameOver} isWinner={isWinner} word={word} />
       <Personnage wrongGuesses={wrongGuesses} />
       <RightLetters word={word} guessedLetters={guessedLetters} />
