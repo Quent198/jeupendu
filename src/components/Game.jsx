@@ -7,6 +7,7 @@ import GameButtons from "./GameButtons";
 import GameStatus from "./GameStatus";
 import FilterTheme from "./FilterTheme";
 import Chalksound from "../../public/writechalk.mp3";
+import BackgroundMusic from "../../public/backgroundmusic.mp3";
 
 let words;
 
@@ -18,6 +19,14 @@ function Game() {
   const writechalksound = new Audio(Chalksound);
   const writechalksoundInstance = writechalksound.cloneNode(); // pour éviter que le précédent son se coupe
   const [score, setScore] = useState(0);
+  const backgroundmusic = new Audio(BackgroundMusic);
+  backgroundmusic.loop = true;
+  backgroundmusic.volume = 0.01;
+  writechalksound.volume = 0.1;
+
+  useEffect(() => {
+    backgroundmusic.play();
+  });
 
   useEffect(() => {
     writechalksoundInstance.play();
@@ -78,12 +87,12 @@ function Game() {
     .split("")
     .every((letter) => guessedLetters.includes(letter));
 
-    const handleRestart = () => {
-      setWord(words[Math.floor(Math.random() * words.length)]);
-      setGuessedLetters([]);
-      setWrongGuesses(0);
-      setScore(0); // Réinitialiser le score
-    };
+  const handleRestart = () => {
+    setWord(words[Math.floor(Math.random() * words.length)]);
+    setGuessedLetters([]);
+    setWrongGuesses(0);
+    setScore(0); // Réinitialiser le score
+  };
 
   return (
     <div
@@ -97,7 +106,9 @@ function Game() {
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Jeu du Pendu
       </h1>
-       <div className="text-white font-chalk text-2xl mb-4 lg:absolute lg:top-4 lg:right-4">Score: {score}</div>
+      <div className="text-white font-chalk text-2xl mb-4 lg:absolute lg:top-4 lg:right-4">
+        Score: {score}
+      </div>
       <GameStatus isGameOver={isGameOver} isWinner={isWinner} word={word} />
       <Personnage wrongGuesses={wrongGuesses} />
       <RightLetters word={word} guessedLetters={guessedLetters} />
@@ -109,7 +120,12 @@ function Game() {
         </>
       )}
 
-      <GameButtons isGameOver={isGameOver} isWinner={isWinner} word={word} onRestart={handleRestart} />
+      <GameButtons
+        isGameOver={isGameOver}
+        isWinner={isWinner}
+        word={word}
+        onRestart={handleRestart}
+      />
     </div>
   );
 }
