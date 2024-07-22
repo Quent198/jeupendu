@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Personnage from "./Personnage";
 import RightLetters from "./RightLetters";
 import WrongLetters from "./WrongLetters";
@@ -6,6 +6,7 @@ import Keyboard from "./Keyboard";
 import GameButtons from "./GameButtons";
 import GameStatus from "./GameStatus";
 import FilterTheme from "./FilterTheme";
+import SoundControl from "./SoundControl"; // Importer le composant
 import Chalksound from "../../public/writechalk.mp3";
 import BackgroundMusic from "../../public/backgroundmusic.mp3";
 
@@ -16,20 +17,23 @@ function Game() {
   const [word, setWord] = useState("");
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState(0);
-  const writechalksound = new Audio(Chalksound);
-  const writechalksoundInstance = writechalksound.cloneNode(); // pour éviter que le précédent son se coupe
   const [score, setScore] = useState(0);
-  const backgroundmusic = new Audio(BackgroundMusic);
-  backgroundmusic.loop = true;
-  backgroundmusic.volume = 0.01;
-  writechalksound.volume = 0.1;
+
+  const backgroundmusic = useRef(new Audio(BackgroundMusic));
+  const writechalksound = useRef(new Audio(Chalksound));
+
+  backgroundmusic.current.loop = true;
+  backgroundmusic.current.volume = 0.01;
+  writechalksound.current.volume = 0.1;
 
   useEffect(() => {
-    backgroundmusic.play();
-  });
+    backgroundmusic.current.play();
+  }, []);
 
   useEffect(() => {
-    writechalksoundInstance.play();
+    if (wrongGuesses > 0) {
+      writechalksound.current.play();
+    }
   }, [wrongGuesses]);
 
   useEffect(() => {
@@ -97,12 +101,16 @@ function Game() {
   return (
     <div
       style={{
-        backgroundPosition: "between",
+        backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundImage: "url('/chalkboard.jpg')",
       }}
-      className="min-h-screen flex flex-col items-center justify-between p-4 py-10 w-screen"
+      className="min-h-screen flex flex-col items-center justify-between p-4 py-10 w-screen relative"
     >
+      <SoundControl
+        backgroundmusic={backgroundmusic.current}
+        writechalksound={writechalksound.current}
+      /> {/* Ajouter le contrôle du son */}
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Jeu du Pendu
       </h1>
@@ -131,3 +139,4 @@ function Game() {
 }
 
 export default Game;
+
