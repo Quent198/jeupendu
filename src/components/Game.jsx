@@ -17,6 +17,7 @@ function Game() {
   const [wrongGuesses, setWrongGuesses] = useState(0);
   const writechalksound = new Audio(Chalksound);
   const writechalksoundInstance = writechalksound.cloneNode(); // pour éviter que le précédent son se coupe
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     writechalksoundInstance.play();
@@ -63,8 +64,11 @@ function Game() {
   const handleGuess = (letter) => {
     if (!guessedLetters.includes(letter)) {
       setGuessedLetters([...guessedLetters, letter]);
-      if (!word.includes(letter)) {
+      if (word.includes(letter)) {
+        setScore(score + 10); // Augmenter le score de 10 pour chaque bonne réponse
+      } else {
         setWrongGuesses(wrongGuesses + 1);
+        setScore(score - 5); // Réduire le score de 5 pour chaque mauvaise réponse
       }
     }
   };
@@ -73,6 +77,13 @@ function Game() {
   const isWinner = word
     .split("")
     .every((letter) => guessedLetters.includes(letter));
+
+    const handleRestart = () => {
+      setWord(words[Math.floor(Math.random() * words.length)]);
+      setGuessedLetters([]);
+      setWrongGuesses(0);
+      setScore(0); // Réinitialiser le score
+    };
 
   return (
     <div
@@ -86,7 +97,7 @@ function Game() {
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Jeu du Pendu
       </h1>
-
+       <div className="text-white font-chalk text-2xl mb-4 lg:absolute lg:top-4 lg:right-4">Score: {score}</div>
       <GameStatus isGameOver={isGameOver} isWinner={isWinner} word={word} />
       <Personnage wrongGuesses={wrongGuesses} />
       <RightLetters word={word} guessedLetters={guessedLetters} />
@@ -98,7 +109,7 @@ function Game() {
         </>
       )}
 
-      <GameButtons isGameOver={isGameOver} isWinner={isWinner} word={word} />
+      <GameButtons isGameOver={isGameOver} isWinner={isWinner} word={word} onRestart={handleRestart} />
     </div>
   );
 }

@@ -1,25 +1,31 @@
 import React from "react";
 
-const GameButtons = ({
-  setWord,
-  setGuessedLetters,
-  setWrongGuesses,
-  words,
-}) => {
-  const handleReset = () => {
-    setWord(words[Math.floor(Math.random() * words.length)]);
-    setGuessedLetters([]);
-    setWrongGuesses(0);
-  };
-
+const GameButtons = ({ isGameOver, isWinner, word, onRestart }) => {
   return (
-    <button
-      onClick={() => window.location.reload()}
-      className="mt-4 bg-black bg-opacity-40 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded font-chalk"
-    >
-      Réinitialiser le jeu
-    </button>
+    <div className="mt-4">
+      {isGameOver && (
+        <div className="text-white font-chalk text-xl mb-4">
+          Vous avez perdu ! Le mot était : {word}
+        </div>
+      )}
+      {isWinner && (
+        <div className="text-white font-chalk text-xl mb-4">
+          Félicitations ! Vous avez gagné !
+        </div>
+      )}
+      {(isGameOver || isWinner) && (
+        <button
+          onClick={onRestart}
+          className="mt-4 bg-black bg-opacity-40 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded font-chalk"
+        >
+          Recommencer
+        </button>
+      )}
+    </div>
   );
 };
 
 export default GameButtons;
+
+
+//"mt-4 bg-black bg-opacity-40 hover:bg-black hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded font-chalk"
