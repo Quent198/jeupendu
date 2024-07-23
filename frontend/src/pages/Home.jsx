@@ -40,7 +40,7 @@ function Home() {
             <div className="modal" role="dialog">
               <div className="modal-box">
                 <input
-                  className="input-username border-2 h-10 w-full"
+                  className="input-username border-2 h-10 w-full placeholder:text-white"
                   placeholder="pseudo"
                   type="text"
                 />
