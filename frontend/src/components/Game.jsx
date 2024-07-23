@@ -9,6 +9,7 @@ import FilterTheme from "./FilterTheme";
 import SoundControl from "./SoundControl"; // Importer le composant
 import Chalksound from "../../public/writechalk.mp3";
 import BackgroundMusic from "../../public/backgroundmusic.mp3";
+import { updateScore } from "../../api/leaderboard";
 
 let words;
 
@@ -79,9 +80,11 @@ function Game() {
       setGuessedLetters([...guessedLetters, letter]);
       if (word.includes(letter)) {
         setScore(score + 10); // Augmenter le score de 10 pour chaque bonne réponse
+        updateScore(localStorage.getItem("username"), 10);
       } else {
         setWrongGuesses(wrongGuesses + 1);
         setScore(score - 5); // Réduire le score de 5 pour chaque mauvaise réponse
+        updateScore(localStorage.getItem("username"), -5);
       }
     }
   };
@@ -110,7 +113,8 @@ function Game() {
       <SoundControl
         backgroundmusic={backgroundmusic.current}
         writechalksound={writechalksound.current}
-      /> {/* Ajouter le contrôle du son */}
+      />{" "}
+      {/* Ajouter le contrôle du son */}
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Jeu du Pendu
       </h1>
@@ -127,7 +131,6 @@ function Game() {
           <FilterTheme setTheme={setTheme} theme={theme} />
         </>
       )}
-
       <GameButtons
         isGameOver={isGameOver}
         isWinner={isWinner}
@@ -139,4 +142,3 @@ function Game() {
 }
 
 export default Game;
-
