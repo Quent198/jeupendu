@@ -18,12 +18,17 @@ import {useNavigate} from "react-router-dom"
 let words;
 
 function Game() {
+ const navigate = useNavigate()
+if (!localStorage.getItem("username")) {
+  navigate("/")
+}
+
   const [theme, setTheme] = useState("animaux");
   const [word, setWord] = useState("");
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState(0);
   const [score, setScore] = useState(0);
-  const navigate = useNavigate()
+ 
 
   const backgroundmusic = useRef(new Audio(BackgroundMusic));
   const writechalksound = useRef(new Audio(Chalksound));
