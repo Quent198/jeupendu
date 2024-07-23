@@ -33,12 +33,12 @@ function Home() {
       <main className="flex gap-10 sm:flex-row flex-col">
         {!localStorage.getItem("username") ? (
           <>
-            <label htmlFor="my_modal_7" className="btn font-chalk w-[15rem] hover:cursor-pointer">
+            <label htmlFor="my_modal_7" className="btn font-chalk w-[15rem] hover:cursor-pointer bg-gray-300">
               Se connecter
             </label>
             <input type="checkbox" id="my_modal_7" className="modal-toggle" />
             <div className="modal" role="dialog">
-              <div className="modal-box">
+              <div className="modal-box ">
                 <input
                   className="input-username border-2 h-10 w-full placeholder:text-white"
                   placeholder="pseudo"
@@ -47,7 +47,7 @@ function Home() {
                 <div className="modal-action">
                   <label
                     htmlFor="my_modal_7"
-                    className="btn bg-white font-chalk w-full"
+                    className="btn bg-gray-300 font-chalk w-full"
                     onClick={(e) => {
                       handleSubmit(e);
                     }}
@@ -65,7 +65,7 @@ function Home() {
               onClick={() => {
                 navigate("/game");
               }}
-              className="btn font-chalk w-[15rem]"
+              className="btn font-chalk w-[15rem] bg-gray-300"
             >
               Commencer le jeu
             </button>
@@ -76,7 +76,7 @@ function Home() {
           onClick={() => {
             navigate("/leaderboard");
           }}
-          className="btn font-chalk w-[15rem]"
+          className="btn font-chalk w-[15rem] bg-gray-300"
         >
           Découvrir le classement
         </button>
