@@ -47,7 +47,7 @@ function Home() {
                 <div className="modal-action">
                   <label
                     htmlFor="my_modal_7"
-                    className="btn font-chalk w-full"
+                    className="btn bg-white font-chalk w-full"
                     onClick={(e) => {
                       handleSubmit(e);
                     }}
