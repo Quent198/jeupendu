@@ -10,6 +10,10 @@ import SoundControl from "./SoundControl"; // Importer le composant
 import Chalksound from "../../public/writechalk.mp3";
 import BackgroundMusic from "../../public/backgroundmusic.mp3";
 import { updateScore } from "../../api/leaderboard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from "react-router-dom"
+
 
 let words;
 
@@ -19,6 +23,7 @@ function Game() {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState(0);
   const [score, setScore] = useState(0);
+  const navigate = useNavigate()
 
   const backgroundmusic = useRef(new Audio(BackgroundMusic));
   const writechalksound = useRef(new Audio(Chalksound));
@@ -110,6 +115,9 @@ function Game() {
       }}
       className="min-h-screen flex flex-col items-center justify-between p-4 py-10 w-screen relative"
     >
+      <FontAwesomeIcon onClick={()=>{
+        navigate("/")
+      }} className="absolute left-5 text-2xl hover:cursor-pointer" icon={faHouse} style={{color: "#ffffff",}} />
       <SoundControl
         backgroundmusic={backgroundmusic.current}
         writechalksound={writechalksound.current}

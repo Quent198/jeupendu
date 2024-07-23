@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getLeaderboard } from "../../api/leaderboard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from "react-router-dom"
 
 function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState(null);
+  const navigate = useNavigate()
   useEffect(() => {
     async function getLeaderboardFromApi() {
       const response = await getLeaderboard();
@@ -24,6 +28,9 @@ function Leaderboard() {
       <h1 className="text-4xl font-bold mb-4 text-white font-chalk">
         Le Classement
       </h1>
+      <FontAwesomeIcon onClick={()=>{
+        navigate("/")
+      }} className="absolute left-5 text-2xl hover:cursor-pointer" icon={faHouse} style={{color: "#ffffff",}} />
       <div className="overflow-x-auto">
         <table className="table  table-pin-rows table-pin-cols">
           <thead>
