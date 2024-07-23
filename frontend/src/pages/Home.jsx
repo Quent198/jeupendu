@@ -33,7 +33,7 @@ function Home() {
       <main className="flex gap-10 sm:flex-row flex-col">
         {!localStorage.getItem("username") ? (
           <>
-            <label htmlFor="my_modal_7" className="btn font-chalk w-[15rem] hover:cursor-pointer bg-gray-300">
+            <label htmlFor="my_modal_7" className="btn font-chalk w-[15rem] hover:cursor-pointer bg-gray-300 ">
               Se connecter
             </label>
             <input type="checkbox" id="my_modal_7" className="modal-toggle" />
@@ -47,7 +47,7 @@ function Home() {
                 <div className="modal-action">
                   <label
                     htmlFor="my_modal_7"
-                    className="btn bg-gray-300 font-chalk w-full"
+                    className="btn bg-gray-300 font-chalk w-full "
                     onClick={(e) => {
                       handleSubmit(e);
                     }}
