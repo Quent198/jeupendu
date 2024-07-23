@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/leaderboard";
+const BASE_URL = "https://jeupendu-backend.vercel.app/api/leaderboard";
 
 export async function getLeaderboard() {
   try {
