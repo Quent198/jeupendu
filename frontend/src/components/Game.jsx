@@ -6,7 +6,7 @@ import Keyboard from "./Keyboard";
 import GameButtons from "./GameButtons";
 import GameStatus from "./GameStatus";
 import FilterTheme from "./FilterTheme";
-import SoundControl from "./SoundControl"; // Importer le composant
+import SoundControl from "./SoundControl"; 
 import Chalksound from "../../public/writechalk.mp3";
 import BackgroundMusic from "../../public/backgroundmusic.mp3";
 import { updateScore } from "../../api/leaderboard";
@@ -34,8 +34,8 @@ if (!localStorage.getItem("username")) {
   const writechalksound = useRef(new Audio(Chalksound));
 
   backgroundmusic.current.loop = true;
-  backgroundmusic.current.volume = 0.01;
-  writechalksound.current.volume = 0.1;
+  backgroundmusic.current.volume = 0.1;
+  writechalksound.current.volume = 0.2;
 
   useEffect(() => {
     backgroundmusic.current.play();
