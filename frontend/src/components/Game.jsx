@@ -34,8 +34,8 @@ if (!localStorage.getItem("username")) {
   const writechalksound = useRef(new Audio(Chalksound));
 
   backgroundmusic.current.loop = true;
-  backgroundmusic.current.volume = 1;
-  writechalksound.current.volume = 2;
+  backgroundmusic.current.volume = 0.1;
+  writechalksound.current.volume = 0.2;
 
   useEffect(() => {
     backgroundmusic.current.play();
