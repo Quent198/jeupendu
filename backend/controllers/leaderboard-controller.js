@@ -19,14 +19,14 @@ const updateScore = async (req, res) => {
     );
 
     if (player) {
-      // Update the player's score
+      
       player.score = score+player.score;
     } else {
-      // Create a new player and add to the players array
+      
       leaderboard[0].players.push({ username, score });
     }
 
-    // Save the updated leaderboard
+    
     await leaderboard[0].save();
     res.status(200).json(leaderboard);
   } catch (error) {
