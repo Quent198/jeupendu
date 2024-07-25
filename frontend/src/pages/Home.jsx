@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -7,7 +6,6 @@ function Home() {
   function handleSubmit(e) {
     e.preventDefault();
     const input = document.getElementsByClassName("input-username")[0].value;
-    console.log(input);
     if (input) {
       localStorage.setItem("username", input);
       window.location.reload();
