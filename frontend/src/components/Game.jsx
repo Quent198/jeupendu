@@ -53,7 +53,7 @@ if (!localStorage.getItem("username")) {
         "gavial",
         "baudroie",
         "ornithorynque",
-        "ecureuil",
+        "écureuil",
         "okapi",
         "capybara",
         "scolopendre",
