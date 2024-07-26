@@ -1,7 +1,7 @@
 import React from "react";
 
 const Keyboard = ({ onGuess, guessedLetters }) => {
-  const letters = "abcdefghijklmnopqrstuvwxyz".split("");
+  const letters = "abcdefghijklmnopqrstuvwxyzàéèêïî".split("");
 
   return (
     <div className="grid grid-cols-8 gap-2 mt-4">

@@ -60,7 +60,7 @@ if (!localStorage.getItem("username")) {
         "dendrobate",
         "grand calao",
         "requin-gobelin",
-        "araignee a face d'ogre",
+        "araignée à face d'ogre",
         "attacus atlas",
         "chat de pallas",
         "monstre de gila",
@@ -80,9 +80,9 @@ if (!localStorage.getItem("username")) {
         "timor-oriental",
         "el salvador",
         "saint-vincent-et-les-grenadines",
-        "trinite-et-tobago",
+        "trinité-et-tobago",
         "iles marshall",
-        "papouasie nouvelle-guinee",
+        "papouasie nouvelle-guinée",
         "sainte-lucie",
         "saint-marin"
       ];
