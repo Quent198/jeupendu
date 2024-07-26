@@ -58,6 +58,14 @@ if (!localStorage.getItem("username")) {
         "capybara",
         "scolopendre",
         "dendrobate",
+        "grand calao",
+        "requin-gobelin",
+        "araignee a face d'ogre",
+        "attacus atlas",
+        "chat de pallas",
+        "monstre de gila",
+        "grenouille de verre",
+        "vampire des abysses"
       ];
     } else if (theme === "pays") {
       words = [
@@ -69,6 +77,11 @@ if (!localStorage.getItem("username")) {
         "botswana",
         "kirghizistan",
         "nauru",
+        "timor-oriental",
+        "el salvador",
+        "saint-vincent-et-les-grenadines",
+        "trinite-et-tobago",
+        "iles marshall"
       ];
     } else if (theme === "anime") {
       words = [
@@ -80,13 +93,19 @@ if (!localStorage.getItem("username")) {
         "naruto",
         "berserk",
         "erased",
+        "hunter x hunter",
+        "made in abyss",
+        "goblin slayer",
+        "black butler",
+        "cyberpunk edgerunner",
+        "psycho-pass"
       ];
     }
     setWord(words[Math.floor(Math.random() * words.length)]);
   }, [theme]);
 
   const handleGuess = (letter) => {
-    if (!guessedLetters.includes(letter)) {
+    if (!guessedLetters.includes(letter) && letter !== '-' && letter !== ' ') {
       setGuessedLetters([...guessedLetters, letter]);
       if (word.includes(letter)) {
         setScore(score + 10); // Augmenter le score de 10 pour chaque bonne réponse
@@ -102,7 +121,9 @@ if (!localStorage.getItem("username")) {
   const isGameOver = wrongGuesses >= 7;
   const isWinner = word
     .split("")
-    .every((letter) => guessedLetters.includes(letter));
+    .every((letter) => guessedLetters.includes(letter) || "- ".includes(letter));
+    
+    
 
   const handleRestart = () => {
     setWord(words[Math.floor(Math.random() * words.length)]);
