@@ -81,7 +81,10 @@ if (!localStorage.getItem("username")) {
         "el salvador",
         "saint-vincent-et-les-grenadines",
         "trinite-et-tobago",
-        "iles marshall"
+        "iles marshall",
+        "papouasie nouvelle-guinee",
+        "sainte-lucie",
+        "saint-marin"
       ];
     } else if (theme === "anime") {
       words = [
@@ -98,7 +101,9 @@ if (!localStorage.getItem("username")) {
         "goblin slayer",
         "black butler",
         "cyberpunk edgerunner",
-        "psycho-pass"
+        "psycho-pass",
+        "one piece",
+        "black clover"
       ];
     }
     setWord(words[Math.floor(Math.random() * words.length)]);
