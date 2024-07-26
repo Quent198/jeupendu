@@ -8,7 +8,7 @@ const RightLetters = ({ word, guessedLetters }) => {
           letter === ' ' ? 'mr-3' : ''  // Augmenter l'écart après un espace
         }${letter === '-' ? 'mx-3' : ''  // Augmenter l'écart autour des tirets
         }`}>
-          {guessedLetters.includes(letter) || letter === '-' || letter === ' ' ? letter : '_'}
+          {guessedLetters.includes(letter) || letter ==="'" || letter === '-' || letter === ' ' ? letter : '_'}
         </span>
       ))}
     </div>

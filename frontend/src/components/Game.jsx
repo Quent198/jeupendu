@@ -60,7 +60,7 @@ if (!localStorage.getItem("username")) {
         "dendrobate",
         "grand calao",
         "requin-gobelin",
-        "araignée à face d'ogre",
+         "araignée à face d'ogre",
         "attacus atlas",
         "chat de pallas",
         "monstre de gila",
@@ -110,7 +110,7 @@ if (!localStorage.getItem("username")) {
   }, [theme]);
 
   const handleGuess = (letter) => {
-    if (!guessedLetters.includes(letter) && letter !== '-' && letter !== ' ') {
+    if (!guessedLetters.includes(letter) && letter !== '-' && letter !== ' ' && letter !== "'") {
       setGuessedLetters([...guessedLetters, letter]);
       if (word.includes(letter)) {
         setScore(score + 10); // Augmenter le score de 10 pour chaque bonne réponse
@@ -126,7 +126,7 @@ if (!localStorage.getItem("username")) {
   const isGameOver = wrongGuesses >= 7;
   const isWinner = word
     .split("")
-    .every((letter) => guessedLetters.includes(letter) || "- ".includes(letter));
+    .every((letter) => guessedLetters.includes(letter) || "- '".includes(letter));
     
     
 
