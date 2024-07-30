@@ -36,8 +36,8 @@ function Leaderboard() {
           <thead>
             <tr>
               <th></th>
-              <td>Nom</td>
-              <td>Score</td>
+              <td className="text-white">Pseudo</td>
+              <td className="text-white">Score</td>
               <th></th>
             </tr>
           </thead>
@@ -52,7 +52,7 @@ function Leaderboard() {
                   .sort((a, b) => b.score - a.score)
                   .map((player, index) => (
                     <tr className="text-white bg-transparent border-2">
-                      <th className="text-black">{index + 1}</th>
+                      <th className="text-white">{index + 1}</th>
                       <td>{player.username}</td>
                       <td>{player.score}</td>
                     </tr>
